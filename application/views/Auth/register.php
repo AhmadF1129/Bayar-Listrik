@@ -12,21 +12,23 @@
                         <div class="col-lg">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Daftar Akun</h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><?= $tittle ?></h1>
                                 </div>
-                                <form class="user">
+                                <form class="user" method="POST" action="<?= base_url('AuthController/register') ?>">
                                     <div class="form-group">
-                                        <input type="text" name="email" class="form-control form-control-user" id="email" placeholder="example@email.com">
+                                        <input type="text" name="email" class="form-control form-control-user" id="email" placeholder="example@email.com" value="<?= set_value('email') ?>">
+                                        <?= form_error('email', '<small class="text-danger">', '</small>') ?>
                                     </div>
                                     <div class="form-group row">
                                         <div class="form-group col-md-6">
                                             <input type="password" name="password1" class="form-control form-control-user" id="password1" placeholder="Password">
+                                            <?= form_error('password1', '<small class="text-danger">', '</small>') ?>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <input type="password" name="password2" class="form-control form-control-user" id="password2" placeholder="Ulangi Password">
+                                            <?= form_error('password2', '<small class="text-danger">', '</small>') ?>
                                         </div>
                                     </div>
-                                    <hr>
                                     <button type="submit" class="btn btn-outline-warning btn-user btn-block mb-3">
                                         Daftar
                                     </button>

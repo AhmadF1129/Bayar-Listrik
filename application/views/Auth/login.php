@@ -12,8 +12,11 @@
                         <div class="col-lg">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Masuk</h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><?= $tittle ?></h1>
                                 </div>
+
+                                <?= $this->session->flashdata('message') ?>
+
                                 <form class="user">
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
@@ -21,14 +24,13 @@
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                     </div>
-                                    <hr>
                                     <button type="submit" class="btn btn-outline-warning btn-user btn-block mb-3">
                                         Login
                                     </button>
                                 </form>
                                 <div class="text-center">
                                     <p>
-                                        Tidak Memiliki Akun? <a href="<?= base_url('AuthController/daftar') ?>">Buat Akun</a>
+                                        Tidak Memiliki Akun? <a href="<?= base_url('AuthController/register') ?>">Buat Akun</a>
                                     </p>
                                 </div>
                             </div>
