@@ -5,7 +5,7 @@
 
         <div class="col-lg-6">
 
-            <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card o-hidden border-1 border-secondary shadow-lg my-5">
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
@@ -17,14 +17,14 @@
 
                                 <?= $this->session->flashdata('message') ?>
 
-                                <form class="user">
+                                <form class="user" method="POST" action="<?= base_url('AuthController/signin') ?>">
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                        <input type="text" name="email" class="form-control form-control-user" id="email" placeholder="Enter Email Address...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                        <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="Password">
                                     </div>
-                                    <button type="submit" class="btn btn-outline-warning btn-user btn-block mb-3">
+                                    <button type="submit" class="btn btn-warning btn-user btn-block mb-3">
                                         Login
                                     </button>
                                 </form>

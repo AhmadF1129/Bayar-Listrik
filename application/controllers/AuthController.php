@@ -23,6 +23,16 @@ class AuthController extends CI_Controller
 	{
 		$data['tittle'] = 'Bayar Listrik | Sign Up';
 
+		$this->load->view('Template/auth_header', $data);
+		$this->load->view('Auth/register');
+		$this->load->view('Template/auth_footer');
+	}
+	
+	public function signup()
+	{
+		$table = "user";
+
+		$this->form_validation->set_rules('name', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
 			'valid_email' => 'Please use valid email!!',
 			'is_unique' => 'Email is already use!'
@@ -35,20 +45,23 @@ class AuthController extends CI_Controller
 			'matches' => 'Password didnt match!!'
 		]);
 
-		if ($this->form_validation->run() == FALSE)
+		if ($this->form_validation->run() == false)
 		{
-			$this->load->view('Template/auth_header', $data);
-			$this->load->view('Auth/register');
-			$this->load->view('Template/auth_footer');
+			redirect('AuthController');
 		}
 		else
 		{
-			$this->Auth->signup();
+			$this->Auth->signup($table);
 			$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
-			Your Account has been created!!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>');
+			Your Account has been created!!</div>');
 			redirect('AuthController');
 		}
+	}
+
+	public function signin()
+	{
+		$table = "user";
+		$this->Auth->signin($table);
 	}
 }
