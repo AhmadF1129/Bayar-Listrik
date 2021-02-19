@@ -21,16 +21,8 @@ class AuthController extends CI_Controller
 
 	public function register()
 	{
-		$data['tittle'] = 'Bayar Listrik | Sign Up';
-
-		$this->load->view('Template/auth_header', $data);
-		$this->load->view('Auth/register');
-		$this->load->view('Template/auth_footer');
-	}
-	
-	public function signup()
-	{
 		$table = "user";
+		$data['tittle'] = 'Bayar Listrik | Sign Up';
 
 		$this->form_validation->set_rules('name', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
@@ -47,7 +39,9 @@ class AuthController extends CI_Controller
 
 		if ($this->form_validation->run() == false)
 		{
-			redirect('AuthController');
+			$this->load->view('Template/auth_header', $data);
+			$this->load->view('Auth/register');
+			$this->load->view('Template/auth_footer');
 		}
 		else
 		{
@@ -63,5 +57,16 @@ class AuthController extends CI_Controller
 	{
 		$table = "user";
 		$this->Auth->signin($table);
+	}
+
+	public function signout()
+	{
+		$this->session->unset_userdata('id');
+		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('nama_lengkap');
+		$this->session->set_flashdata('message', '
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+		Success to sign out!!</div>');
+		redirect('AuthController');
 	}
 }

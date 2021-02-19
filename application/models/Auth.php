@@ -35,7 +35,8 @@ class Auth extends CI_Model
                    $data = [
                     'id' => $user['id'],
                     'email' => $user['email'],
-                    'nama_lengkap' => $user['nama_lengkap']
+                    'nama_lengkap' => $user['nama_lengkap'],
+                    'level_id' => $user['level_id'],
                    ];
                    $this->session->set_userdata($data);
 
@@ -46,11 +47,12 @@ class Auth extends CI_Model
                 $data = [
                  'id' => $user['id'],
                  'email' => $user['email'],
-                 'nama_lengkap' => $user['nama_lengkap']
+                 'nama_lengkap' => $user['nama_lengkap'],
+                 'level_id' => $user['level_id'],
                 ];
                 $this->session->set_userdata($data);
 
-                redirect('UserController');
+                redirect('User/UserController');
                }
            }
            else

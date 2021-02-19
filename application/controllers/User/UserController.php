@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class AdminController extends CI_Controller
+class UserController extends CI_Controller
 {
     public function __construct()
     {
@@ -17,7 +17,7 @@ class AdminController extends CI_Controller
         $this->load->view('Template/main_header', $data);
         $this->load->view('Template/main_sidebar', $data);
         $this->load->view('Template/main_topbar', $data);
-        $this->load->view('Admin/index');
+        $this->load->view('User/index');
         $this->load->view('Template/main_footer');
     }
 }
