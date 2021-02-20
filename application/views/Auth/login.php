@@ -20,6 +20,7 @@
                                 <form class="user" method="POST" action="<?= base_url('AuthController/signin') ?>">
                                     <div class="form-group">
                                         <input type="text" name="email" class="form-control form-control-user" id="email" placeholder="Enter Email Address...">
+                                        <small id="demo" class="text-danger"></small>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="Password">

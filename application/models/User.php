@@ -5,6 +5,8 @@ class User extends CI_Model
 {
     public function getUserById()
     {
-        return $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $id = $this->session->userdata('id');
+        $query = "SELECT u.*, l.level FROM user u JOIN `level` l ON l.id = u.level_id WHERE u.id = $id";
+        return $this->db->query($query)->row_array();
     }
 }
